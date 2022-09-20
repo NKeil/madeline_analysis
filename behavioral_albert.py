@@ -169,7 +169,7 @@ class Suite2pSeries:
             self.neural_df['time'] = transform_func(self.neural_df['time'])
 
     def calculate_dff(self):
-        rois = list(self.neural_df.columns[1:])
+        rois = [c for c in self.neural_df.columns if c != 'time']
         melted = pd.melt(self.neural_df, id_vars='time', value_vars=rois, var_name='roi', value_name='ZdFF')
         return melted
 
